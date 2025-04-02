@@ -7,7 +7,7 @@ import components.map.Map;
  * extends the book recommender kernel with some enhanced methods that introduce
  * the graphs that i'll be using to recommend books.
  */
-public interface BookRecommenderEnhancedInterface extends BookRecommenderKernelInterface {
+public interface BookRecommender extends BookRecommenderKernel {
 
     /**
      * gets recommendations for a given book title.
