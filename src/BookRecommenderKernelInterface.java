@@ -21,7 +21,7 @@ import components.standard.Standard;
  *   ensures this = #this - {b in #this | b.title = title}
  * </pre>
  */
-public interface BookRecommenderKernelInterface extends Standard<BookRecommenderKernelInterface> {
+public interface BookRecommenderKernel extends Standard<BookRecommender> {
 
     /*adds a book to the recommender system
      * @param b the book to be added
