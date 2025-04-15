@@ -15,4 +15,13 @@ public interface BookRecommender extends BookRecommenderKernel {
      * @return a map containing recommended books keyed by their title
      */
     Map<String, Book> getRecommendations(String title);
+
+     /**
+     * Returns a set of all book titles in the system.
+     *
+     * @return a List containing all book titles
+     */
+    Set<String> bookTitles();
+
+
 }
