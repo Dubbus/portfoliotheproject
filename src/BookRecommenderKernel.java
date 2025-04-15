@@ -6,6 +6,7 @@
  * </pre>
  */
 
+import components.set.Set;
 import components.standard.Standard;
 
 
@@ -78,5 +79,13 @@ public interface BookRecommenderKernel extends Standard<BookRecommender> {
      * state remains unchanged.)
      */
     int size();
+
+
+     /**
+     * Returns a set of all book titles in the system.
+     *
+     * @return a List containing all book titles
+     */
+    Set<String> bookTitles();
 
 }
