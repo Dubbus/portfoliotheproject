@@ -1,6 +1,7 @@
 
 
 import components.map.Map;
+import components.set.Set;
 
 /**
  * book recommender enhanced interface that provides secondary methods.
