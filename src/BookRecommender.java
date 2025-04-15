@@ -1,7 +1,6 @@
 
 
 import components.map.Map;
-import components.set.Set;
 
 /**
  * book recommender enhanced interface that provides secondary methods.
@@ -17,12 +16,22 @@ public interface BookRecommender extends BookRecommenderKernel {
      */
     Map<String, Book> getRecommendations(String title);
 
+
      /**
-     * Returns a set of all book titles in the system.
+     * Determines whether two books are adjacent in the recommendation graph.
+     * <p>
+     * Two books are considered adjacent if they share the same author or the same genre.
+     * </p>
      *
-     * @return a List containing all book titles
+     * @param firstBook  the first book; assumed to be non-null
+     * @param secondBook the second book; assumed to be non-null
+     * @return {@code true} if the books are adjacent, {@code false} otherwise
      */
-    Set<String> bookTitles();
+     boolean areAdjacent(Book firstBook, Book secondBook);
 
 
 }
+
+
+
+
