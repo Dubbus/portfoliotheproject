@@ -1,7 +1,7 @@
 /**
  * Represents a Book.
  */
-public record BookRecord() {
+public record Book(){
 
     /**
      * Represents a tracker for a book, containing details such as title,
