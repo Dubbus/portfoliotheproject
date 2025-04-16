@@ -1,9 +1,4 @@
 /**
- * Represents a Book.
- */
-public record Book(){
-
-    /**
      * Represents a tracker for a book, containing details such as title,
      * author, genre, and the number of pages.
      *
@@ -12,5 +7,7 @@ public record Book(){
      * @param genre  the genre of the book
      * @param pages  the number of pages in the book
      */
-    public record BookTracker(String title, String author, String genre, int pages) { }
+public record Book(String title, String author, String genre, int pages) {
+
+
 }

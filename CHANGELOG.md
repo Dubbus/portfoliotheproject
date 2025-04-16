@@ -9,6 +9,10 @@ the following form: YYYY.0M.0D.
 ## [2025.04.15]
 - Added implementation for getRecommendations enhanced method.
 
+## [2025.04.12]
+ - Fixed interfaces, completed pre assignment
+ - This changelog didn't exist for the interfaces branch, so I created it for this assignment.
+
 ## [2024.12.30]
 
 - Added table-based rubrics to all 6 parts of the project
