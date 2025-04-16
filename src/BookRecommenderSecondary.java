@@ -4,7 +4,7 @@ import components.map.Map1L;
 import components.queue.Queue;
 import components.queue.Queue1L;
 
-public abstract class BookRecommenderSecondary {
+public abstract class BookRecommenderSecondary implements BookRecommender{
 
      /**
      * Performs a breadth-first search (BFS) from the source book, identifying
@@ -38,7 +38,7 @@ public abstract class BookRecommenderSecondary {
             while (toVisit.length() > 0) {
                 String currentTitle = toVisit.dequeue();
 
-                if (containsBook(currentTitle)) {
+                if (this.containsBook(currentTitle)) {
                     Book currentBook = getBook(currentTitle);
                     int currentDist = distances.value(currentTitle);
 
