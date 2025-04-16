@@ -18,13 +18,14 @@ public abstract class BookRecommenderSecondary implements BookRecommender{
      *         if the source does not exist in the system
      * @throws IllegalArgumentException if {@code sourceTitle} is {@code null}
      */
+    @Override
     public Map<String, Book> getRecommendations(String sourceTitle) {
 
         // Single result to return at the end (no multiple returns).
         Map<String, Book> recommendations = new Map1L<>();
 
         //check if book with sourceTitle exists.
-        if (containsBook(sourceTitle)) {
+        if (this.containsBook(sourceTitle)) {
 
             //map and a queue to store distances, and toVisit
             Map<String, Integer> distances = new Map1L<>();
@@ -39,15 +40,15 @@ public abstract class BookRecommenderSecondary implements BookRecommender{
                 String currentTitle = toVisit.dequeue();
 
                 if (this.containsBook(currentTitle)) {
-                    Book currentBook = getBook(currentTitle);
+                    Book currentBook = this.getBook(currentTitle);
                     int currentDist = distances.value(currentTitle);
 
                     //iterate through all titles to check for adjacency
-                    for (String candidateTitle : allTitles()) {
+                    for (String candidateTitle : bookTitles()) {
                         //only enqueue if two books are next to each other
-                        if (!distances.hasKey(candidateTitle) && containsBook(candidateTitle)) {
-                            Book candidateBook = getBook(candidateTitle);
-                            if (areAdjacent(currentBook, candidateBook)) {
+                        if (!distances.hasKey(candidateTitle) && this.containsBook(candidateTitle)) {
+                            Book candidateBook = this.getBook(candidateTitle);
+                            if (this.areAdjacent(currentBook, candidateBook)) {
                                 distances.add(candidateTitle, currentDist + 1);
                                 toVisit.enqueue(candidateTitle);
                             }
@@ -80,7 +81,7 @@ public abstract class BookRecommenderSecondary implements BookRecommender{
                 String titleKey = p.key();
                 int dist = p.value();
                 if (!titleKey.equals(sourceTitle) && dist == minimalDistance) {
-                    recommendations.add(titleKey, getBook(titleKey));
+                    recommendations.add(titleKey, this.getBook(titleKey));
                 }
                 temp2.add(titleKey, dist);
             }
