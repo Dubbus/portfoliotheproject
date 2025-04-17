@@ -4,20 +4,28 @@ import components.map.Map1L;
 import components.queue.Queue;
 import components.queue.Queue1L;
 
+
+/**
+ * Abstract secondary layer for the BookRecommender component.
+ *
+ * <p>This class implements the user‑facing recommendation algorithm
+ * (via breadth‑first search over the “book graph”) using only the
+ * kernel operations declared in {@link BookRecommender}.  It assumes
+ * the kernel supplies the methods:
+ * <ul>
+ *   <li>{@code containsBook(String)} – to check for existence</li>
+ *   <li>{@code getBook(String)} – to retrieve a Book by title</li>
+ *   <li>{@code areAdjacent(Book,Book)} – to test similarity</li>
+ *   <li>{@code bookTitles()} – to enumerate all stored titles</li>
+ * </ul>
+ *
+ * <p>The BFS computes a “distance” (number of adjacency‑steps) from the
+ * source book to every other book, then returns all books at the minimal
+ * non‑zero distance as recommendations.</p>
+ */
 public abstract class BookRecommenderSecondary implements BookRecommender{
 
-     /**
-     * Performs a breadth-first search (BFS) from the source book, identifying
-     * all reachable books and computing their “distance” in the recommendation
-     * graph (where adjacency is defined by the kernel's {@code areAdjacent}
-     * method). It then returns a {@code Map<String, Book>} of all books
-     * at the minimal nonzero distance from the source.
-     *
-     * @param sourceTitle the title of the source book; must not be {@code null}
-     * @return a map of recommended books keyed by their title; returns an empty map
-     *         if the source does not exist in the system
-     * @throws IllegalArgumentException if {@code sourceTitle} is {@code null}
-     */
+
     @Override
     public Map<String, Book> getRecommendations(String sourceTitle) {
 
@@ -44,7 +52,7 @@ public abstract class BookRecommenderSecondary implements BookRecommender{
                     int currentDist = distances.value(currentTitle);
 
                     //iterate through all titles to check for adjacency
-                    for (String candidateTitle : bookTitles()) {
+                    for (String candidateTitle : this.bookTitles()) {
                         //only enqueue if two books are next to each other
                         if (!distances.hasKey(candidateTitle) && this.containsBook(candidateTitle)) {
                             Book candidateBook = this.getBook(candidateTitle);
@@ -90,4 +98,45 @@ public abstract class BookRecommenderSecondary implements BookRecommender{
 
         return recommendations;
     }
+
+    /*common method implementations - didn't include toString because
+     * i will not be testing these as a string, but as a map. because a mian
+     * portion of the project is a string, i have created kernel methods that
+     * function as toSTring. Hence, it is omitted.
+     */
+
+     /**
+     * Two recommenders are equal if they contain exactly the same titles
+     * and each corresponding Book is equal.  Assumes obj is a BookRecommender.
+     * No break statements, no instanceof, single return.
+     */
+    @Override
+    public final boolean equals(Object obj) {
+        BookRecommender other = (BookRecommender) obj;
+        // compare the sets of titles
+        Set<String> mine   = this.bookTitles();
+        Set<String> theirs = other.bookTitles();
+        boolean same = mine.equals(theirs);
+        // if titles match, compare each Book
+        for (String t : mine) {
+            if (same) {
+                same = this.getBook(t).equals(other.getBook(t));
+            }
+        }
+        return same;
+    }
+
+    /**
+     * lowkey this a guess still don't really know how hashcode works but
+     * this is just stolen from some code
+     */
+    @Override
+    public final int hashCode() {
+        int h = 1;
+        for (String t : this.bookTitles()) {
+            Book b = this.getBook(t);
+            h = 31 * h + t.hashCode();
+            h = 31 * h + b.hashCode();
+        }
+        return h;
 }

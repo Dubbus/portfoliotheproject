@@ -1,0 +1,125 @@
+/*book recommender kernel component with primary methods
+ * @initially <pre>
+ * (): ensures this = {}
+ * (Book b): ensures this = #this ∪ {b}
+ * (String title): ensures this = #this - {b in #this | b.title = title}
+ * </pre>
+ */
+
+ import components.set.Set;
+
+
+
+public class BookRecommender1 extends BookRecommenderSecondary{
+
+
+   /**
+     * Adds a book to the recommender system.
+     *
+     * @param b the book to be added
+     * @requires (The parameter b must not be null.)
+     * @updates this
+     * @ensures (After this method call, the system's state includes all
+     *  previously added books plus the new book b.)
+     */
+    @Override
+    void addBook(Book b);
+
+
+    /**
+     * Removes a book from the recommender system.
+     *
+     * @param title the title of the book user wants to remove
+     * @requires (The parameter title must not be null.)
+     * @updates this
+     * @ensures (After this method call, the system's state contains all the
+     * previous books except those whose title equals the provided title.)
+     */
+    @Override
+    void removeBook(String title);
+
+    /**
+     * Retrieves the book with the given title.
+     *
+     * @param title the title of the book to retrieve
+     * @requires (The parameter title must not be null.)
+     * @return the book with the given title, or null if not found
+     * @ensures (Returns a book whose title matches the given title if it
+     * exists; otherwise, returns null. The system's state remains unchanged.)
+     */
+    @Override
+    Book getBook(String title);
+
+    /**
+     * Checks whether a book with the given title exists.
+     *
+     * @param title the title to check
+     * @requires (The parameter title must not be null.)
+     * @return true if a book with the title exists, false otherwise
+     * @ensures (Returns true if there is at least one book in the system with
+     * the given title; returns false otherwise. The system's state remains
+     *  unchanged.)
+     */
+    @Override
+    boolean containsBook(String title);
+
+    /**
+     * Gives the amount of books in the system.
+     *
+     * @return the number of books
+     * @requires (There are no special preconditions; the system should have
+     *  been initialized.)
+     * @ensures (Returns the total count of books in the system. The system's
+     * state remains unchanged.)
+     */
+    @Override
+    int size();
+
+
+     /**
+     * Returns a set of all book titles in the system.
+     *
+     * @return a List containing all book titles
+     */
+    @Override
+    Set<String> bookTitles();
+
+
+    /**
+     * Determines whether two books are adjacent in the recommendation graph.
+     * <p>
+     * Two books are considered adjacent if they share the same author or the same genre.
+     * </p>
+     *
+     * @param firstBook  the first book; assumed to be non-null
+     * @param secondBook the second book; assumed to be non-null
+     * @return {@code true} if the books are adjacent, {@code false} otherwise
+     */
+    @Override
+    boolean areAdjacent(Book firstBook, Book secondBook);
+
+    @Override
+    public void clear() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'clear'");
+    }
+
+    @Override
+    public BookRecommender newInstance() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'newInstance'");
+    }
+
+    @Override
+    public void transferFrom(BookRecommender arg0) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'transferFrom'");
+
+        BookRecommender1 localSource = (BookRecommender1) source;
+        this.rep = localSource.rep;
+        localSource.createNewRep();
+    }
+
+
+}
+
