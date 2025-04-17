@@ -140,4 +140,5 @@ public abstract class BookRecommenderSecondary implements BookRecommender{
             h = 31 * h + b.hashCode();
         }
         return h;
+  }
 }
