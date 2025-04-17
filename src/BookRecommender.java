@@ -16,19 +16,21 @@ public interface BookRecommender extends BookRecommenderKernel {
      */
     Map<String, Book> getRecommendations(String title);
 
-
-     /**
-     * Determines whether two books are adjacent in the recommendation graph.
-     * <p>
-     * Two books are considered adjacent if they share the same author or the same genre.
-     * </p>
-     *
-     * @param firstBook  the first book; assumed to be non-null
-     * @param secondBook the second book; assumed to be non-null
-     * @return {@code true} if the books are adjacent, {@code false} otherwise
-     */
-     boolean areAdjacent(Book firstBook, Book secondBook);
-
+    /**
+    * Determines whether two books are adjacent in the recommendation graph.
+    *
+    * Two books are considered adjacent if they share the same author or
+    * the same genre.
+    *
+    *
+    * @param firstBook  the first book; assumed to be non-null
+    * @param secondBook the second book; assumed to be non-null
+    * @return {@code true} if the books are adjacent, {@code false} otherwise
+    */
+    static boolean areAdjacent(Book firstBook, Book secondBook){
+        return firstBook.author().equals(secondBook.author())
+            || firstBook.genre().equals(secondBook.genre());
+    }
 
 }
 

@@ -6,14 +6,56 @@
  * </pre>
  */
 
- import components.set.Set;
+ import components.map.Map;
+import components.map.Map1L;
+import components.set.Set;
+import components.set.Set1L;
+
+
+/**
+ * {@code BookRecommender1} implements the BookRecommender kernel
+ * using a Map from titles to Book objects.
+ *
+ * @convention
+ *   [for every pair (k, v) in rep: k = v.getTitle()
+ *    and all keys k are distinct, non‑null, non‑empty strings,
+ *    and all values v are non‑null Book objects]
+ * @correspondence
+ *   this = { v in Book | there exists k such that (k ↦ v) in rep }
+ */
+public class BookRecommender1 extends BookRecommenderSecondary {
 
 
 
-public class BookRecommender1 extends BookRecommenderSecondary{
 
+    /*
+     * Private members --------------------------------------------------------
+     */
 
-   /**
+    /**
+     * Representation of this: a map from each book’s title to the Book object.
+     */
+    private Map<String, Book> rep;
+
+    /**
+     * Helper to create a fresh, empty representation.
+     */
+    private void createNewRep() {
+        this.rep = new Map1L<>();
+    }
+
+    /*
+     * Constructors -----------------------------------------------------------
+     */
+
+    /**
+     * No‑argument constructor.
+     */
+    public BookRecommender1() {
+        this.createNewRep();
+    }
+
+    /**
      * Adds a book to the recommender system.
      *
      * @param b the book to be added
@@ -23,7 +65,9 @@ public class BookRecommender1 extends BookRecommenderSecondary{
      *  previously added books plus the new book b.)
      */
     @Override
-    void addBook(Book b);
+    public final void addBook(Book b) {
+        this.rep.add(b.title(), b);
+    }
 
 
     /**
@@ -36,7 +80,11 @@ public class BookRecommender1 extends BookRecommenderSecondary{
      * previous books except those whose title equals the provided title.)
      */
     @Override
-    void removeBook(String title);
+    public final void removeBook(String title) {
+        if (this.rep.hasKey(title)) {
+            this.rep.remove(title);
+        }
+    }
 
     /**
      * Retrieves the book with the given title.
@@ -48,7 +96,9 @@ public class BookRecommender1 extends BookRecommenderSecondary{
      * exists; otherwise, returns null. The system's state remains unchanged.)
      */
     @Override
-    Book getBook(String title);
+    public Book getBook(String title){
+        return this.rep.value(title);
+    }
 
     /**
      * Checks whether a book with the given title exists.
@@ -61,7 +111,9 @@ public class BookRecommender1 extends BookRecommenderSecondary{
      *  unchanged.)
      */
     @Override
-    boolean containsBook(String title);
+    public boolean containsBook(String title){
+        return this.rep.hasKey(title);
+    }
 
     /**
      * Gives the amount of books in the system.
@@ -73,7 +125,9 @@ public class BookRecommender1 extends BookRecommenderSecondary{
      * state remains unchanged.)
      */
     @Override
-    int size();
+    public int size() {
+        return this.rep.size();
+    }
 
 
      /**
@@ -82,42 +136,33 @@ public class BookRecommender1 extends BookRecommenderSecondary{
      * @return a List containing all book titles
      */
     @Override
-    Set<String> bookTitles();
+    public Set<String> bookTitles(){
+        Set<String> titles = new Set1L<>();
+        for (Map.Pair<String, Book> p : this.rep) {
+            titles.add(p.key());
+        }
+        return titles;
+    }
 
-
-    /**
-     * Determines whether two books are adjacent in the recommendation graph.
-     * <p>
-     * Two books are considered adjacent if they share the same author or the same genre.
-     * </p>
-     *
-     * @param firstBook  the first book; assumed to be non-null
-     * @param secondBook the second book; assumed to be non-null
-     * @return {@code true} if the books are adjacent, {@code false} otherwise
-     */
-    @Override
-    boolean areAdjacent(Book firstBook, Book secondBook);
 
     @Override
-    public void clear() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'clear'");
+    public final void clear() {
+        this.createNewRep();
     }
 
     @Override
-    public BookRecommender newInstance() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'newInstance'");
+    public final BookRecommender newInstance() {
+        return new BookRecommender1();
     }
 
     @Override
-    public void transferFrom(BookRecommender arg0) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'transferFrom'");
-
-        BookRecommender1 localSource = (BookRecommender1) source;
-        this.rep = localSource.rep;
-        localSource.createNewRep();
+    public final void transferFrom(BookRecommender source) {
+        // copy every book from source into this
+        for (String title : source.bookTitles()) {
+            this.addBook(source.getBook(title));
+        }
+        //clear source i think
+        source.clear();
     }
 
 

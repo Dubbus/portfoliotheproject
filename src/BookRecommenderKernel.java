@@ -89,17 +89,8 @@ public interface BookRecommenderKernel extends Standard<BookRecommender> {
     Set<String> bookTitles();
 
 
-    /**
-     * Determines whether two books are adjacent in the recommendation graph.
-     * <p>
-     * Two books are considered adjacent if they share the same author or the same genre.
-     * </p>
-     *
-     * @param firstBook  the first book; assumed to be non-null
-     * @param secondBook the second book; assumed to be non-null
-     * @return {@code true} if the books are adjacent, {@code false} otherwise
-     */
-    boolean areAdjacent(Book firstBook, Book secondBook);
+
+
 
 
 }
