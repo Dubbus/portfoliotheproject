@@ -157,13 +157,15 @@ public class BookRecommender1 extends BookRecommenderSecondary {
 
     @Override
     public final void transferFrom(BookRecommender source) {
-        // copy every book from source into this
-        for (String title : source.bookTitles()) {
-            this.addBook(source.getBook(title));
-        }
-        //clear source i think
-        source.clear();
-    }
+    BookRecommender1 local = (BookRecommender1) source;
+
+    // O(1) swap of the internal map references
+    Map<String,Book> temp = this.rep;
+    this.rep       = local.rep;
+
+    // leave source empty
+    local.rep = temp;
+    local.createNewRep();
 
 
 }
