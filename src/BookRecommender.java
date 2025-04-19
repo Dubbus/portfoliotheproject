@@ -27,10 +27,7 @@ public interface BookRecommender extends BookRecommenderKernel {
     * @param secondBook the second book; assumed to be non-null
     * @return {@code true} if the books are adjacent, {@code false} otherwise
     */
-    static boolean areAdjacent(Book firstBook, Book secondBook){
-        return firstBook.author().equals(secondBook.author())
-            || firstBook.genre().equals(secondBook.genre());
-    }
+    boolean areAdjacent(Book firstBook, Book secondBook);
 
 }
 

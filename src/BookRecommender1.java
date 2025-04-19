@@ -7,6 +7,7 @@
  */
 
  import components.map.Map;
+import components.map.Map.Pair;
 import components.map.Map1L;
 import components.set.Set;
 import components.set.Set1L;
@@ -134,15 +135,19 @@ public class BookRecommender1 extends BookRecommenderSecondary {
      * Returns a set of all book titles in the system.
      *
      * @return a List containing all book titles
-     */
+     *
+     * */
+
     @Override
-    public Set<String> bookTitles(){
-        Set<String> titles = new Set1L<>();
-        for (Map.Pair<String, Book> p : this.rep) {
-            titles.add(p.key());
-        }
-        return titles;
+public Set<String> bookTitles() {
+    Set<String> titles = new Set1L<>();
+    for (Pair<String,Book> p : this.rep) {
+        titles.add(p.key());
     }
+    return titles;
+}
+
+
 
 
     @Override
@@ -169,4 +174,4 @@ public class BookRecommender1 extends BookRecommenderSecondary {
 
 
 }
-
+}
