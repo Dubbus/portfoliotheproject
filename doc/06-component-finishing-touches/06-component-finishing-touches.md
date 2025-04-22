@@ -307,18 +307,32 @@ Take some time to fill them out honestly.
 > complete the portfolio project, how much better (or worse) do you think you
 > understand software development and why?
 
-<!-- TODO: discuss -->
+I think i better understand software development. I think the utilization of
+version control, the frustration of somewhat writing "blindly" until you can
+test at the end, and most of all the satisfaction of getting something to work.
+I got a lot of help from a bunch of sources - instructors, friends, family,
+google, and even some ChatGPT admittedly. However, any of these tools alone
+wouldn't have gotten the job done. I had to learn how to piece together
+information and utilize it to complete a task.
 
 > Also, did the portfolio project surface any gaps in your own knowledge of
 > software development. If so, what are those gaps and how did you address them?
 
-<!-- TODO: discuss -->
+Yep! The main gap in my software development was testing. more specifically,
+testing properly. Honestly, throughout my courseload in the software sequence
+I wrote off testing as useless and that i'd never have to do it, but it was
+super useful when I had no idea what I was doing adn the tests were the only thing
+that was showing what was and wasn't working
 
 > Finally, as a part of completing the portfolio project, to what extent has
 > your perspective of software development changed, if at all? In other words,
 > is software development something you still enjoy? If not, why not?
 
-<!-- TODO: discuss -->
+I think the most concise way I can answer this question is to say that this project
+convinced me to want to pursue software development as a career. I have spent
+a lot of time wrestling if I want to pursue data analytics (which I'm in now)
+or CSE, and this project showed my love and passion for developing something
+which I haven't receieved yet in any of my Data Analytics classes.
 
 > One of the challenges of completing the portfolio project is picking up a lot
 > of skills on your own. Some of these skills are, of course, software skills.
@@ -326,25 +340,38 @@ Take some time to fill them out honestly.
 > this process. Therefore, the first question is what skills did you pick up
 > through this process?
 
-<!-- TODO: discuss -->
+Getting help from others (having absolute humility in not knowing what i'm doing)
+documenting your changes properly
+coding efficiently
 
 > The follow-up question is: could you rephrase these skills you picked up
 > as bullet points that you could put on a resume? Try it below.
 
-<!-- TODO: discuss -->
+Efficient in developing innovative solutions
+Collaborative; able to work with others and get help when needed
+Descriptive in documentation, ensures ease of understanding of written code
 
 > Next, how has working on this project affected your career trajectory?
 > In other words, do you now hate the topic you picked? Or, are you even more
 > interested in it? Both outcomes are valuable to your personal development.
 
-<!-- TODO: discuss -->
+This project convinced me to do more research into optimization and specifically
+discrete algorithms. In fact, after starting this project, I applied to work with
+someone at Oak Ridge National Lab researching Discrete Algorithms during the fall
+so I can continue to do this type of work.
 
 > Finally, consider the skills you've picked up and your current career
 > trajectory. What are some things you could do to continue on your
 > career trajectory? Also, who are some mentors you could contact to help
 > you stay on your path?
+Make more projects , do more research, and talk to whoever will listen about
+my career goals
 
-<!-- TODO: discuss -->
+Grifski
+My brother (EE PHD)
+My dad(PhD in Materials Science)
+Hopefully more people coming soon!
+
 
 ### Changelog
 
