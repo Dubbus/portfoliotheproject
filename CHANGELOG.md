@@ -16,6 +16,10 @@ methods
  - Fixed interfaces, completed pre assignment
  - This changelog didn't exist for the interfaces branch, so I created it for this assignment.
 
+## [2025.02.04]
+
+Brainstormed Ideas for components
+
 ## [2024.12.30]
 
 - Added table-based rubrics to all 6 parts of the project

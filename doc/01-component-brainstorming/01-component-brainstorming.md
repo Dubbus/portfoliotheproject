@@ -1,8 +1,8 @@
 # Portfolio Part 1: Component Brainstorming
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
+- **Name**: Muralidharan.44
 - **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
-- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
+- **Due Date**: 02/04/25
 
 ## Assignment Overview
 
@@ -106,11 +106,11 @@ Below is further rationale/explanation for the rubric items above:
 > brainstorming. Plus it helps us get to know you better! Feel free to share
 > images in this section.
 
-<!-- TODO: briefly talk about your interests then delete this comment.
-Also, protip: you can preview what your response looks like by hitting
-the magnifying glass icon in the upper-right corner or pressing CTRL+K and
-then V. This kind of button combination is called a chord, for whatever
-reason -->
+I enjoy reading, lifting weights, running, practicing my instruments(violin, mridangam, kanjira, vocal)
+
+also also i wanted to use this opportunity to learn about discrete algorithms
+like shortest path stuff and Dijkstra's, so it's probably going to get very convoluded
+and unnecessarily complex but I think it'll be fun
 
 ## Assignment
 
@@ -122,13 +122,12 @@ that may help you in your brainstorming. All of these components were made at
 some point by one of your peers, so you should feel confident that you can
 accomplish any of them.
 
-<!-- TODO: browse the list of possible projects then delete this comment -->
 
-There is no requirement that you use any of the components listed above.
-If you want to model something else, go for it! Very common early object
-projects usually attempt to model real-world systems like banks, cars,
-etc. Make of this whatever seems interesting to you, and keep in mind that
-you're just brainstorming right now. You do not have to commit to anything.
+Practice Logger - Date, time, focus of practice session, overall satisfaction
+Book Tracker - book details, rating out of 100, recommend or no,
+Workout tracker - add a routine, add an exercise to the routine, log a workout
+Macro Tracker - set calorie goal, add a meal, get total calories
+
 
 ### Example Component
 
@@ -200,68 +199,104 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
+- Component Design #1: Book Reading Tracker Component
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - A component that helps you track books that you're reading, some details about the book,
+  track your progress as a percentage, and let you give a rating out of 100
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
-  - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
-  - **Additional Considerations** (*note*: "I don't know" is an acceptable
-    answer for each of the following questions):
-    - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
-    - Would this component rely on any internal classes (e.g., `Map.Pair`)?
-      Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
-    - Would this component need any enums or constants (e.g.,
-      `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
-    - Can you implement your secondary methods using your kernel methods?
-      Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+    - void addBookRead(String title, String genre, String author)
+    - void addToBeRead
+    - void addConnection
+    - List<String> getRecommendations
+    - int setRating
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
-  - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
-  - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - shortestPathToBook - uses Djikstra's to find the shortest
+    connection between two books
+    -List<String> genreCluster - uses graph clustering to group books by genre
+    -List<String> mostConnectedBooks - finds books with most connections
+    -Set<String> highestRecommended - recommends the book in your TBR with the
+    most connections (the one you might enjoy the most)
+    -AddConnection
+    -GetDirectConnection
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - The component is mutable because you can add to the graph over time with books
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes - this component would likely need to use queue and map in order to
+      work in the most efficient manner possible.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - We'd probably use enumns and constans for genre values, or maybe choosing a
+      recommendation strategy (like djikstras, bfs, etc)
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I think so - however because of the complexity of the secondary methods it might be difficult
+      - For example, we can implement getRecommendation by using getDirectConnections, addBook, and addConnection
 
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: Instrument Practice Tracker
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - A component for those who play way too many instruments and would like to track their practice
+    sessions for each one. You can set the instrument, time of practice session, the focus of the session,
+    whether or not you were satisfied, progress of a certain song, etc. This one has no Discrete algo stuff, to make
+    it simpler to implement.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void addInstrument
+    - void logPracticeSession - instrument, topic, duration, focus, satisfaction
+    - void trackTopicProgress
+    - int getTotalPracticeTime
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    -  doubleGetAveragePracticeTime
+    - String getMostPracticedInstrument
+    - Queue<String> getTopicsInProgress
+    - double getSatisfaction
+    - Queue<String> getPracticeTrend
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, pratice logs must be frequently updated
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - yes, it would rely on a PracticeSession class to store details and progress on individual songs
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, for praticeFocus, we would have an enum that has Scales, Composition, Technique, Improvisation
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes - we can compute the averagePracticeTime using getTotalPracticeTime and dividing it by the number of
+      practice entries.
+
+- Component Design #3: Workout Tracker
+  - **Description**:
+    - component that tracks routines, exercises,
+sets, reps and weight lifted.
+  - **Kernel Methods**:
+    - void addExercise (routine, exercise, sets, reps, weight)
+    - void removeExercise(routine, exercise)
+    - void logWorkout(routine, date)
+     - double totalVolume(exercise)
+  - **Secondary Methods**:
+    -  doubleGetAverageWeightLifted(exercise)
+    - getMostPerformedExercises();
+    - String getStrongerstList();
+    - boolean isProgressing(exercise);
+    - List<String> getWorkoutsForDate(date)
+  - **Additional Considerations** (*note*: "I don't know" is an acceptable
+    answer for each of the following questions):
+    - Would this component be mutable? Answer and explain:
+      - Yes, we need to add and subtract from logs and routines
+    - Would this component rely on any internal classes (e.g., `Map.Pair`)?
+      Answer and explain:
+      - IDK
+    - Would this component need any enums or constants (e.g.,
+      `Program.Instruction`)? Answer and explain:
+      - Yes, type of workout enum (strength, stretching, cardio, etc)
+    - Can you implement your secondary methods using your kernel methods?
+      Answer, explain, and give at least one example:
+      - I'm not sure for this one- I'm not really happy with this one anyway, I need to do way more work to figure out
+      a way to do this that would actually be useful. Pretty useless idea as it currently is.
 
 ## Post-Assignment
 
